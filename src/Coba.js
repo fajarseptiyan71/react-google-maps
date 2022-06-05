@@ -3,12 +3,17 @@ import {
   useJsApiLoader,
   GoogleMap,
   StandaloneSearchBox,
+  Marker,
 } from "@react-google-maps/api";
 
 const containerStyle = {
   width: "800px",
   height: "800px",
 };
+
+function MapsMarker({ isMarker, position }) {
+  return isMarker ? <Marker position={position} /> : <></>;
+}
 
 function MyComponent() {
   const { isLoaded } = useJsApiLoader({
@@ -22,6 +27,7 @@ function MyComponent() {
     lat: -6.914744,
     lng: 107.60981,
   });
+  const [isMarker, setIsMarker] = useState(false);
 
   const onPlacesChanged = () => {
     const location = searchBox.getPlaces()[0].geometry.location;
@@ -31,6 +37,7 @@ function MyComponent() {
   const onClickMap = (e) => {
     const location = e.latLng;
     setCoordinate({ lat: location.lat(), lng: location.lng() });
+    setIsMarker(true);
   };
 
   return isLoaded ? (
@@ -67,6 +74,7 @@ function MyComponent() {
           }}
         />
       </StandaloneSearchBox>
+      <MapsMarker isMarker={isMarker} position={coordinate} />
     </GoogleMap>
   ) : (
     <></>
