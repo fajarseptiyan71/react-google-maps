@@ -6,6 +6,8 @@ import {
   Marker,
 } from "@react-google-maps/api";
 
+import { dark, retro } from "./components/MapsStyle";
+
 const containerStyle = {
   width: "800px",
   height: "800px",
@@ -42,9 +44,12 @@ function MyComponent() {
 
   return isLoaded ? (
     <GoogleMap
+      options={{
+        styles: dark,
+      }}
       mapContainerStyle={containerStyle}
       center={coordinate}
-      zoom={12}
+      zoom={1}
       onClick={onClickMap}
     >
       <StandaloneSearchBox
