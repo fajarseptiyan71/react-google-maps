@@ -45,11 +45,14 @@ function MyComponent() {
   return isLoaded ? (
     <GoogleMap
       options={{
+        mapTypeControlOptions: { style: 2 },
+        zoomControlOptions: { position: 7 },
+        streetViewControlOptions: { position: 7 },
         styles: dark,
       }}
       mapContainerStyle={containerStyle}
       center={coordinate}
-      zoom={1}
+      zoom={12}
       onClick={onClickMap}
     >
       <StandaloneSearchBox
