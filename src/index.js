@@ -3,11 +3,11 @@ import ReactDOM from "react-dom";
 import "./index.css";
 import App from "./App";
 import reportWebVitals from "./reportWebVitals";
-import MyComponent from "./Coba";
+import { Maps, Chart } from "./pages";
 
 ReactDOM.render(
   <React.StrictMode>
-    <MyComponent />
+    <Chart />
   </React.StrictMode>,
   document.getElementById("root")
 );
